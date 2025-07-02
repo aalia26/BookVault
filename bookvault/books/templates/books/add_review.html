@@ -10,6 +10,6 @@
         <textarea id="content" name="content" class="form-control" rows="4" required></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Submit Review</button>
-    <a href="{% url 'book_detail' book.pk %}" class="btn btn-secondary">Cancel</a>
+    <a href="{% url 'books:book_detail' book.pk %}" class="btn btn-secondary">Cancel</a>
 </form>
 {% endblock %}

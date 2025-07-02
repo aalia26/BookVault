@@ -25,12 +25,11 @@ from books import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', book_views.home, name='home'),
-    path('books/', include('books.urls')),
+    path('books/', include('books.urls', namespace='books')),
     path('signup/', book_views.signup, name='signup'),
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
     path('upcoming/<int:pk>/', views.upcoming_book_detail, name='upcoming_book_detail'),
-    path('', include('books.urls')),
 ]
 
 if settings.DEBUG:
