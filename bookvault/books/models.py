@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Book(models.Model):
+    """Represents a book available in the store."""
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
     description = models.TextField()
@@ -16,6 +17,7 @@ class Book(models.Model):
 
 
 class Review(models.Model):
+    '''Represents a review written by a user.'''
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='reviews')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
@@ -26,6 +28,7 @@ class Review(models.Model):
 
 
 class Cart(models.Model):
+    '''Represents a shopping cart associated with the user.'''
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='cart')
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -38,6 +41,7 @@ class Cart(models.Model):
 
 
 class CartItem(models.Model):
+    '''Represents item in shopping cart.'''
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -48,6 +52,7 @@ class CartItem(models.Model):
 
 
 class UpcomingBook(models.Model):
+    '''Represents an upcoming book.'''
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
     release_date = models.DateField()
