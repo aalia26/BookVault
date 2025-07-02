@@ -16,7 +16,7 @@
             <h5 class="card-title">{{ book.title }}</h5>
             <p class="card-text">By {{ book.author }}</p>
             <p class="card-text"><small>Release Date: {{ book.release_date }}</small></p>
-            <a href="{% url 'upcoming_book_detail' book.pk %}" class="btn btn-primary">Details</a>
+            <a href="{% url 'books:upcoming_book_detail' book.pk %}" class="btn btn-primary">Details</a>
           </div>
         </div>
       </div>

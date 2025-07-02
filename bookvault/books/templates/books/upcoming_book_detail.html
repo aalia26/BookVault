@@ -8,6 +8,6 @@
     {% if book.cover_image %}
       <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" style="max-width: 200px;">
     {% endif %}
-    <a href="{% url 'upcoming_books' %}" class="btn btn-secondary mt-3">Back</a>
+    <a href="{% url 'books:upcoming_books' %}" class="btn btn-secondary mt-3">Back</a>
   </div>
 {% endblock %}

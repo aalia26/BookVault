@@ -14,6 +14,7 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+
 class Review(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='reviews')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -22,6 +23,7 @@ class Review(models.Model):
 
     def __str__(self):
         return f'Review by {self.user.username} on {self.book.title}'
+
 
 class Cart(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='cart')
@@ -34,6 +36,7 @@ class Cart(models.Model):
     def total_price(self):
         return sum(item.total_price for item in self.items.all())
 
+
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
@@ -42,6 +45,7 @@ class CartItem(models.Model):
     @property
     def total_price(self):
         return self.book.price * self.quantity
+
 
 class UpcomingBook(models.Model):
     title = models.CharField(max_length=200)

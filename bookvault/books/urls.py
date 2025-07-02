@@ -1,13 +1,15 @@
 from django.urls import path
 from . import views
 
+app_name = 'books'
+
 urlpatterns = [
     path('', views.book_list, name='book_list'),
     path('<int:pk>/', views.book_detail, name='book_detail'),
     path('<int:pk>/add_review/', views.add_review, name='add_review'),
     path('cart/', views.cart_detail, name='cart_detail'),
     path('cart/add/<int:book_id>/', views.add_to_cart, name='add_to_cart'),
-    path('cart/remove/<int:book_id>/', views.remove_from_cart, name='remove_from_cart'),
+    path('cart/remove/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('upcoming/<int:pk>/', views.upcoming_book_detail, name='upcoming_book_detail'),
     path('upcoming/', views.upcoming_books, name='upcoming_books'),
 ] 

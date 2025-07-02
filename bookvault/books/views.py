@@ -75,7 +75,7 @@ def add_to_cart(request, book_id):
     if not created:
         item.quantity += 1
         item.save()
-    return redirect('cart_detail')
+    return redirect('books:cart_detail')
 
 
 @login_required
@@ -90,7 +90,7 @@ def remove_from_cart(request, item_id):
     """Remove an item from the cart."""
     item = get_object_or_404(CartItem, pk=item_id, cart__user=request.user)
     item.delete()
-    return redirect('cart_detail')
+    return redirect('books:cart_detail')
 
 
 @login_required
